@@ -1,8 +1,22 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Scrapbook Kita 💖</title>
+
+<!-- font aesthetic -->
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
 body {
   background: #fdf6e3;
   font-family: 'Patrick Hand', cursive;
   text-align: center;
   overflow-x: hidden;
+}
+
+h1 {
+  margin: 20px;
 }
 
 .scrapbook {
@@ -65,12 +79,6 @@ body {
   cursor: pointer;
 }
 
-/* timeline */
-.timeline {
-  list-style: none;
-  padding: 0;
-}
-
 /* hati jatuh */
 .heart {
   position: fixed;
@@ -84,3 +92,72 @@ body {
     transform: translateY(100vh);
   }
 }
+</style>
+
+</head>
+<body>
+
+<h1>📖 Scrapbook Kita 💕</h1>
+
+<!-- musik -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="scrapbook">
+
+  <div class="note rotate1" onclick="openPopup('Hari pertama kita ketemu 😭💖')">
+    <div class="tape"></div>
+    <img src="foto1.jpg">
+    <p>First Meet 💕</p>
+  </div>
+
+  <div class="note rotate2" onclick="openPopup('Kita ketawa terus 😆')">
+    <div class="tape"></div>
+    <img src="foto2.jpg">
+    <p>Best Day 😆</p>
+  </div>
+
+  <div class="note rotate3" onclick="openPopup('Aku ga bakal lupa 🤍')">
+    <div class="tape"></div>
+    <img src="foto3.jpg">
+    <p>Unforgettable 🤍</p>
+  </div>
+
+</div>
+
+<!-- popup -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span onclick="closePopup()" class="close">&times;</span>
+    <p id="popup-text"></p>
+  </div>
+</div>
+
+<script>
+function openPopup(text) {
+  document.getElementById("popup").style.display = "block";
+  document.getElementById("popup-text").innerText = text;
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+// hati jatuh
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerText = "❤️";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 5000);
+}, 500);
+</script>
+
+</body>
+</html>
